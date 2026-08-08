@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Transform: AWS::Serverless-2016-10-31
+
+Description: Event Registration API
+
+Resources:
+
+  RegisterFunction:
+    Type: AWS::Serverless::Function
+
+    Properties:
+      CodeUri: src/register/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: Events
+
+        - DynamoDBCrudPolicy:
+            TableName: Registrations
+
+      Events:
+
+        RegisterAPI:
+          Type: Api
+
+          Properties:
+            Path: /register
+            Method: post
+            AWSTemplateFormatVersion: '2010-09-09'
+
+Transform: AWS::Serverless-2016-10-31
+
+Description: Event Registration API
+
+Resources:
+
+  RegisterFunction:
+    Type: AWS::Serverless::Function
+
+    Properties:
+      CodeUri: src/register/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: Events
+
+        - DynamoDBCrudPolicy:
+            TableName: Registrations
+
+      Events:
+
+        RegisterAPI:
+          Type: Api
+
+          Properties:
+            Path: /register
+            Method: post
