@@ -34,6 +34,12 @@ jobs:
       - name: Validate SAM template
         run: sam validate
 
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Run tests
+        run: pytest
+        
       - name: Build SAM application
         run: sam build
 
